@@ -1,9 +1,7 @@
+let domain = location.origin 
+
 if(location.origin == "https://garrongarron.github.io"){
-    location.origin = location.origin+'/Fortnite/'
+    domain = location.origin+'/Fortnite/'
 }
-const domain = location.origin
-
-
-
 
 export default domain
