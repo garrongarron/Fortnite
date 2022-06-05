@@ -5,7 +5,10 @@ import renderer from "../basic/Renderer.js";
 import resize from "../basic/Resize.js";
 import scene from "../basic/Scene.js";
 import cube from "../basic/shapes/Cube.js";
-import getAgentJones from "../models/characters/AgentJones/AgentJones.js";
+// import getAgentPeely from "../models/characters/AgentPeely/AgentPeely.js";
+// import getRebirth from "../models/characters/Rebirth/Rebirth.js";//ok
+// import getSkullTrooper from "../models/characters/SkullTrooper/SkullTrooper.js";//ok
+import getAgentJones from "../models/characters/AgentJones/AgentJones.js";//ok
 import characterSelector from "../UI/CharacterSelector.js";
 // import plane from "../basic/shapes/Plane.js";
 

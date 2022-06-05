@@ -1,3 +1,5 @@
+import characters from "../game/Characters.js"
+
 class CharacterSelector {
     constructor() {
         this.node = null
@@ -11,6 +13,15 @@ class CharacterSelector {
     }
     start() {
         this.promise.then(() => {
+            this.node.querySelector('ul').innerHTML = ''
+            Object.entries(characters).forEach(character => {
+                const li = document.createElement('li')
+                li.innerHTML = character[1].name
+                li.style.backgroundImage = `url(src/game/characters/${character[0]}.png)`
+                this.node.querySelector('ul').append(li)
+            })
+            
+            
             this.node.style.display = 'block'
         })
         return this.promise
