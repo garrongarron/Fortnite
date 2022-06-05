@@ -29,7 +29,10 @@ body {
     position: fixed;
 }
 .landing h1{
-    font-size: 5rem;
+    font-size: 10rem;
     padding-top: 20%;
     color: var(--color-1);
+}
+.landing p{
+    font-size: 2rem;
 }
