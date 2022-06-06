@@ -31,6 +31,7 @@ class CharacterSelector {
         if(camera.rotation.y <= -Math.PI *2){
             loopMachine.removeCallback(this.cameraSpinIn)
             camera.rotation.y = 0
+            sounds.play('getGun')
         }
     }
     loadCharacter(){

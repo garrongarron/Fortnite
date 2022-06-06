@@ -10,6 +10,7 @@ import player from "../game/Player.js";
 // import getRebirth from "../models/characters/Rebirth/Rebirth.js";//ok
 // import getSkullTrooper from "../models/characters/SkullTrooper/SkullTrooper.js";//ok
 import getAgentJones from "../models/characters/AgentJones/AgentJones.js";//ok
+import sounds from "../sounds/Audios.js";
 import characterSelector from "../UI/characterselector/CharacterSelector.js";
 // import plane from "../basic/shapes/Plane.js";
 
@@ -17,7 +18,7 @@ import characterSelector from "../UI/characterselector/CharacterSelector.js";
 class SceneDefault {
     open(sceneHandler) {
         this.sceneHandler = sceneHandler
-        document.addEventListener('click', this.next)
+        // document.addEventListener('click', this.next)
         // scene.add(plane);
         scene.add(cube);
         characterSelector.start()
@@ -28,6 +29,7 @@ class SceneDefault {
         getAgentJones().then(model => {
             scene.add(model);
             player.setPlayer(model)
+            sounds.play('getGun')
         })
         scene.add(light);
         loopMachine.addCallback(this.render);
