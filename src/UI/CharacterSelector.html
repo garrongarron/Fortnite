@@ -7,6 +7,7 @@
             <li>Agent Jones</li>
             <li>Agent Jones</li>
         </ul>
+        <button>Comenzar</button>
     </div>
     <link rel="stylesheet" href="/css/style.css">
     <style>
@@ -18,7 +19,7 @@
             background-color: #999;
             z-index: 1;
         }
-    
+
         .character-selector .left {
             position: fixed;
             top: 10rem;
@@ -28,13 +29,14 @@
             padding-top: 1rem;
             border: 2px solid var(--color-1);
         }
-        .character-selector h2{
+
+        .character-selector h2 {
             padding: 1em;
             color: var(--color-1);
             font-size: 2rem;
             font-weight: bold;
         }
-    
+
         .character-selector ul {
             width: 25vw;
             display: grid;
@@ -42,7 +44,7 @@
             grid-template-columns: repeat(2, 1fr);
             padding: 1rem;
         }
-    
+
         .character-selector li {
             list-style: none;
             border: 2px solid var(--color-1);
@@ -64,9 +66,27 @@
             padding: .5rem;
             background-position: 60% 5%;
         }
+
         .character-selector li:hover {
             background-color: var(--color-5);
             color: var(--color-1);
+        }
+
+        .character-selector button {
+            position: fixed;
+            font-family: FontName;
+            font-size: 2rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            background: black;
+            color: var(--color-5);
+            border: 1px solid var(--color-5);
+            text-shadow: 0 0 2px black;
+            box-shadow: 0 0 15px var(--color-5);
+            right: 5rem;
+            bottom: 3rem;
         }
     </style>
 </section>

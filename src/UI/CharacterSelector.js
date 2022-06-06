@@ -1,4 +1,5 @@
 import characters from "../game/Characters.js"
+import sceneHandler from "../scenesystem/SceneHandler.js"
 
 class CharacterSelector {
     constructor() {
@@ -20,7 +21,9 @@ class CharacterSelector {
                 li.style.backgroundImage = `url(src/game/characters/${character[0]}.png)`
                 this.node.querySelector('ul').append(li)
             })
-            
+            this.node.querySelector('button').addEventListener('click', () => {
+                sceneHandler.goTo('game')
+            })
             
             this.node.style.display = 'block'
         })
