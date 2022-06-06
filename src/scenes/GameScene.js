@@ -34,9 +34,7 @@ class GameScene {
         loopMachine.start()
         inventoryHandler.start()
         collectableSystem.start()
-        player.getPromise().then(model => {
-            controllerBuilder.start(model)
-        })
+        controllerBuilder.start(player.getPlayer())
     }
     render = () => {
         this.stats.update();
