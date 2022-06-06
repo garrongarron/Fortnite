@@ -4,6 +4,7 @@ import loopMachine from "../basic/LoopMachine.js";
 import renderer from "../basic/Renderer.js";
 import scene from "../basic/Scene.js";
 import cube from "../basic/shapes/Cube.js";
+import terrain from "../basic/terrain/Terrain.js";
 import controllerBuilder from "../game/ControllerBuilder.js";
 import player from "../game/Player.js";
 
@@ -16,8 +17,8 @@ class GameScene {
         scene.add(cube);
         loopMachine.addCallback(() => {
             cube.rotation.y += 0.01;
-
         })
+        terrain.start(scene)
         scene.add(light);
         loopMachine.addCallback(this.render);
         loopMachine.start()

@@ -1,12 +1,13 @@
 import mouse from "../basic/Mouse.js"
 
 class CameraController {
-    constructor() {
+    constructor(peerId) {
+        this.peerId = peerId
         this.character = null
-        this.radio = 2 //1.75
+        this.radio = 5 //1.75
         this.height = 1.5
         this.heightTarget = 1.2
-        this.angle = 1
+        this.angle = 0
         this.angleSensibility = 0.1
         this.ahead = 20
         this.camera = null
@@ -38,7 +39,7 @@ class CameraController {
         // )
         this.camera.lookAt(
             position.x, //+ Math.sin(rotation.y) * this.ahead,
-            position.y - mouse.acumulated.y / 100,
+            position.y +this.height, //- mouse.acumulated.y / 100,
             position.z,// + Math.cos(rotation.y) * this.ahead
         )
         // console.log( Math.sin(rotation.y) * this.radio)
