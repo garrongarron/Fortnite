@@ -4,6 +4,7 @@ import keyListener from "../basic/KeyListener.js";
 import mouse from "../basic/Mouse.js";
 import { canvas } from "../basic/Renderer.js";
 import terrain from "../basic/terrain/Terrain.js";
+import { AnimationController } from "../controllers/AnimationController.js";
 import { CameraController } from "../controllers/CameraController.js";
 import { CharacterController } from "../controllers/CharacterController.js"
 import { CollectableController } from "../controllers/CollectableController.js";
@@ -44,12 +45,16 @@ class ControllerBuilder {
         collectableController.setCallback((obj) => {
             eventBus.dispatch('collectable', obj)
         })
+        
         this.characterController.addController(collectableController)
+        const ac = new AnimationController(nick)
+        this.characterController.addController(ac)
 
         this.characterController.start();
         keyListener.start();
         mouse.setCanvas(canvas)
         mouse.start();
+        ac.start();
     }
 }
 

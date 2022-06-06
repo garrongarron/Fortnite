@@ -1,3 +1,4 @@
+import animationBehaviour from "../basic/animations/AnimationBehaviour.js"
 import TransitionHandler from "../basic/animations/TransitionHandler.js"
 import { mode } from "./ModeController.js"
 
@@ -5,35 +6,36 @@ import { mode } from "./ModeController.js"
 class AnimationController{
     constructor() {
         this.state = null
-        this.trnasitionHandler = null
+        this.transitionHandler = null
     }
     init(characterController) { 
         this.state = characterController.state
-        if(!this.trnasitionHandler){
-            this.trnasitionHandler = new TransitionHandler(characterController.character)
+        if(!this.transitionHandler){
+            this.transitionHandler = new TransitionHandler(characterController.character)
         }
-        this.trnasitionHandler.start()
+        this.transitionHandler.start()
     }
     stop(){
-        this.trnasitionHandler.stop()
+        this.transitionHandler.stop()
     }
     tick() { 
+        const speed = 1.2
         if(this.state.mode == mode.IDLE){
             if (this.state.translation.y == 1){// console.log('2 adelante');
-                this.trnasitionHandler.action(5)
+                this.transitionHandler.action(animationBehaviour.run, speed)
             } else if (this.state.translation.y == -1){// console.log('1 atras');
-                this.trnasitionHandler.action(6)
+                this.transitionHandler.action(animationBehaviour.runBack, speed)
             } else {// console.log('0 quieto');
-                this.trnasitionHandler.action(4)
+                this.transitionHandler.action(animationBehaviour.idle, speed)
             }
         }
         if(this.state.mode == mode.SHOOTER){
             if (this.state.translation.y == 1){// console.log('2 adelante');
-                this.trnasitionHandler.action(1)
+                this.transitionHandler.action(animationBehaviour.run, speed)
             } else if (this.state.translation.y == -1){// console.log('1 atras');
-                this.trnasitionHandler.action(2)
+                this.transitionHandler.action(animationBehaviour.runBack, speed)
             } else {// console.log('0 quieto');
-                this.trnasitionHandler.action(3)
+                this.transitionHandler.action(animationBehaviour.idle, speed)
             }
         }
     }

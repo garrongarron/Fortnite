@@ -3,7 +3,7 @@ class MoveController {
         this.peerId = peerId
         this.state = null
         this.character = null
-        this.speed = .07
+        this.speed = .09
     }
     init(characterController) {
         this.state = characterController.state

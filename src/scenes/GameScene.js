@@ -11,6 +11,7 @@ import collectableSystem from "../game/CollectableSystem.js";
 import controllerBuilder from "../game/ControllerBuilder.js";
 import player from "../game/Player.js";
 import loadTrees from "../models/Tress/TreeSpawner.js";
+import hpSystem from "../UI/hpsystem/HPSystem.js";
 import inventoryHandler from "../UI/inventory/InventoryHandler.js";
 
 
@@ -30,6 +31,13 @@ class GameScene {
         terrain.start(scene)
         scene.add(light);
         loadTrees(scene);
+        
+        hpSystem.start();
+        hpSystem.addValue(-100)
+        setInterval(() => {
+            hpSystem.addValue(.2)
+        }, 500);
+
         loopMachine.addCallback(this.render);
         loopMachine.start()
         inventoryHandler.start()

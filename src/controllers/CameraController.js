@@ -12,6 +12,7 @@ class CameraController {
         this.ahead = 20
         this.camera = null
         this.state = null
+        this.target = new THREE.Vector3()
         this.y = 0
     }
     init(characterController) {
@@ -34,16 +35,19 @@ class CameraController {
             position.y + this.height + .25 + this.y / 500,
             position.z - Math.cos(rotation.y + this.angle) * this.radio,
         )
+        
         // this.camera.lookAt(
         //     position.x + Math.sin(rotation.y) * this.ahead,
         //     position.y - mouse.acumulated.y / 100,
         //     position.z + Math.cos(rotation.y) * this.ahead
         // )
-        this.camera.lookAt(
-            position.x, //+ Math.sin(rotation.y) * this.ahead,
-            position.y + this.height,
-            position.z,// + Math.cos(rotation.y) * this.ahead
-        )
+
+        
+        this.target.x=  THREE.MathUtils.lerp(this.target.x, position.x, 0.5)
+        this.target.y=  THREE.MathUtils.lerp(this.target.y, position.y +this.height, 0.5)
+        this.target.z=  THREE.MathUtils.lerp(this.target.z, position.z, 0.5)
+
+        this.camera.lookAt(this.target)
         // console.log( Math.sin(rotation.y) * this.radio)
     }
 }

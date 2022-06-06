@@ -1,9 +1,10 @@
 const fileList = {
-    // "0":"Idle.fbx",
-    // "1":"Pistol Run.fbx",
-    // "2":"Pistol Run Backward.fbx",
-    // "3":"Idle.fbx",
-    // "4":"Idle.fbx",
+    "0":"Neutral Idle.fbx",
+    "1":"Running.fbx",
+    "2":"Running Backward.fbx",
+    "3":"Left Strafe.fbx",
+    "4":"Right Strafe.fbx",
+
     // "5":"Idle.fbx",
     // "6":"Idle.fbx",
     // "7":"Pistol Strafe Left.fbx",

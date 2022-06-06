@@ -55,3 +55,14 @@ canvas{
     text-shadow:  0 0 2px black;
     box-shadow: 0 0 15px var(--color-5);
 }
+
+.slide{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(90deg, #00ff00 25%, #ffc0cb00 0%);
+    border: 1px solid white;
+    box-shadow: 0px 0px 4px white;
+}
