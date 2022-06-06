@@ -12,6 +12,7 @@ class CameraController {
         this.ahead = 20
         this.camera = null
         this.state = null
+        this.y = 0
     }
     init(characterController) {
         this.character = characterController.character
@@ -24,12 +25,13 @@ class CameraController {
 
         if (this.state.angle.y == 1) this.angle -= this.angleSensibility
         if (this.state.angle.y == -1) this.angle += this.angleSensibility
+        this.y = THREE.MathUtils.lerp(this.y, mouse.acumulated.y, 0.3)
 
         const rotation = this.character.rotation
         const position = this.character.position.clone()
         this.camera.position.set(
             position.x - Math.sin(rotation.y + this.angle) * this.radio,
-            position.y + this.height,
+            position.y + this.height + .25 + this.y / 500,
             position.z - Math.cos(rotation.y + this.angle) * this.radio,
         )
         // this.camera.lookAt(
@@ -39,7 +41,7 @@ class CameraController {
         // )
         this.camera.lookAt(
             position.x, //+ Math.sin(rotation.y) * this.ahead,
-            position.y +this.height, //- mouse.acumulated.y / 100,
+            position.y + this.height,
             position.z,// + Math.cos(rotation.y) * this.ahead
         )
         // console.log( Math.sin(rotation.y) * this.radio)

@@ -18,7 +18,6 @@ class GravityController {
     }
     setArray(array) {
         this.array = array
-        console.log('terrain', this.array)
     }
     tick() {
         
