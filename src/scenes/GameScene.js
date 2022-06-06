@@ -7,9 +7,11 @@ import scene from "../basic/Scene.js";
 import cube from "../basic/shapes/Cube.js";
 import Stats from "../basic/Stats.js";
 import terrain from "../basic/terrain/Terrain.js";
+import collectableSystem from "../game/CollectableSystem.js";
 import controllerBuilder from "../game/ControllerBuilder.js";
 import player from "../game/Player.js";
 import loadTrees from "../models/Tress/TreeSpawner.js";
+import inventoryHandler from "../UI/inventory/InventoryHandler.js";
 
 
 class GameScene {
@@ -30,9 +32,8 @@ class GameScene {
         loadTrees(scene);
         loopMachine.addCallback(this.render);
         loopMachine.start()
-        const displacement = -.5
-        camera.position.set(displacement, 2, 4);
-        camera.lookAt(displacement, 1, 0);
+        inventoryHandler.start()
+        collectableSystem.start()
         player.getPromise().then(model => {
             controllerBuilder.start(model)
         })

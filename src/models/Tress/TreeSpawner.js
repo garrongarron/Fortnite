@@ -64,7 +64,6 @@ let loadTrees = (scene) => {
         })
     }
     Promise.all(promises).then((a) => {
-        console.log('ALL LOADED');
         a.forEach(object => {
             treesPrefavGroup.add(object);
         })

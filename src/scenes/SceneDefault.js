@@ -10,7 +10,7 @@ import player from "../game/Player.js";
 // import getRebirth from "../models/characters/Rebirth/Rebirth.js";//ok
 // import getSkullTrooper from "../models/characters/SkullTrooper/SkullTrooper.js";//ok
 import getAgentJones from "../models/characters/AgentJones/AgentJones.js";//ok
-import characterSelector from "../UI/CharacterSelector.js";
+import characterSelector from "../UI/characterselector/CharacterSelector.js";
 // import plane from "../basic/shapes/Plane.js";
 
 

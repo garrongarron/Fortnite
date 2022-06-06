@@ -6,7 +6,6 @@ const loader = new THREE.TextureLoader()
 const matCapTexture = loader.load( './src/basic/terrain/texture/images/n.png' );
 const mat = new THREE.MeshStandardMaterial();
 mat.map = matCapTexture
-console.log(mat)
 let getMaterial = () => {
     return new Promise((res, rej) => {
         textureLoader().then(t => {

@@ -14,7 +14,6 @@ for (const [key, value] of Object.entries(fileList)) {
 const urlModel = folder + '/animations/agentejones.fbx'
 
 const getAgentJones = () => {
-    console.log(urlModel)
     const animationLoader = new AnimationLoader(urlModel, urlAnimations)
     const promiseLoader = new PromiseLoader(THREE.FBXLoader, function (object) {
         const scale = .005
