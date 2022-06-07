@@ -4,7 +4,8 @@ import loopMachine from "../basic/LoopMachine.js";
 import renderer from "../basic/Renderer.js";
 import resize from "../basic/Resize.js";
 import scene from "../basic/Scene.js";
-import cube from "../basic/shapes/Cube.js";
+// import cube from "../basic/shapes/Cube.js";
+import cylinder from "../basic/shapes/Cylinder.js";
 import player from "../game/Player.js";
 // import getAgentPeely from "../models/characters/AgentPeely/AgentPeely.js";
 // import getRebirth from "../models/characters/Rebirth/Rebirth.js";//ok
@@ -20,17 +21,14 @@ class SceneDefault {
         this.sceneHandler = sceneHandler
         // document.addEventListener('click', this.next)
         // scene.add(plane);
-        scene.add(cube);
+        scene.add(cylinder);
+        cylinder.position.y =-.1
         characterSelector.start()
-        loopMachine.addCallback(() => {
-            cube.rotation.y += 0.01;
-
-        })
-        getAgentJones().then(model => {
-            scene.add(model);
-            player.setPlayer(model)
-            sounds.play('getGun')
-        })
+        // getAgentJones().then(model => {
+        //     scene.add(model);
+        //     player.setPlayer(model)
+        //     sounds.play('getGun')
+        // })
         scene.add(light);
         loopMachine.addCallback(this.render);
         loopMachine.start()
@@ -50,6 +48,7 @@ class SceneDefault {
         // this.sceneHandler.goTo('menu')
     }
     close() {
+        scene.remove(cylinder);
         loopMachine.removeCallback(this.render)
         characterSelector.stop()
     }

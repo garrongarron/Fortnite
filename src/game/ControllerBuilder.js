@@ -3,6 +3,8 @@ import eventBus from "../basic/EventBus.js";
 import keyListener from "../basic/KeyListener.js";
 import mouse from "../basic/Mouse.js";
 import { canvas } from "../basic/Renderer.js";
+import scene from "../basic/Scene.js";
+import bullet from "../basic/shapes/Bullet.js";
 import terrain from "../basic/terrain/Terrain.js";
 import { AnimationController } from "../controllers/AnimationController.js";
 import { CameraController } from "../controllers/CameraController.js";
@@ -13,7 +15,9 @@ import { CRotationController } from "../controllers/CRotationController.js";
 import { GravityController } from "../controllers/GravityController.js";
 import { KeyController } from "../controllers/KeyController.js";
 import { MoveController } from "../controllers/MoveController.js";
+import { WeaponController } from "../controllers/WeaponController.js";
 import nick from "../services/nick.js";
+import characters from "./Characters.js";
 import collectableSystem from "./CollectableSystem.js";
 
 class ControllerBuilder {
@@ -43,10 +47,16 @@ class ControllerBuilder {
         collectableController.setCallback((obj) => {
             eventBus.dispatch('collectable', obj)
         })
-        
+
         this.characterController.addController(collectableController)
         const ac = new AnimationController(nick)
         this.characterController.addController(ac)
+
+
+        //weapon
+        const wc = new WeaponController(nick)
+        wc.setWeapon(bullet)
+        this.characterController.addController(wc)
 
         this.characterController.start();
         keyListener.start();

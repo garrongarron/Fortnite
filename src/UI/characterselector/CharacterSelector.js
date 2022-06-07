@@ -37,6 +37,7 @@ class CharacterSelector {
     loadCharacter(){
         this.characterContainer.getter().then(model => {
             scene.add(model);
+            model.name = this.characterContainer.name
             player.setPlayer(model)
             loopMachine.addCallback(this.cameraSpinIn)
         })

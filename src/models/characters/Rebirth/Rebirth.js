@@ -11,7 +11,7 @@ for (const [key, value] of Object.entries(fileList)) {
     urlAnimations[key] = folder + 'animations/' + value
 }
 
-const urlModel = folder + '/animations/Rebirth.fbx'
+const urlModel = folder + 'animations/Rebirth.fbx'
 
 const getRebirth = () => {
     console.log(urlModel)

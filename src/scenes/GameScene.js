@@ -24,11 +24,6 @@ class GameScene {
         document.body.appendChild(this.stats.dom);
         this.sceneHandler = sceneHandler
         document.addEventListener('click', this.next)
-        // scene.add(plane);
-        scene.add(cube);
-        loopMachine.addCallback(() => {
-            cube.rotation.y += 0.01;
-        })
         terrain.start(scene)
         scene.add(light);
         loadTrees(scene);

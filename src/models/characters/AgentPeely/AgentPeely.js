@@ -11,7 +11,7 @@ for (const [key, value] of Object.entries(fileList)) {
     urlAnimations[key] = folder + 'animations/' + value
 }
 
-const urlModel = folder + '/animations/AgentPeely.fbx'
+const urlModel = folder + 'animations/AgentPeely.fbx'
 
 const getAgentPeely = () => {
     console.log(urlModel)

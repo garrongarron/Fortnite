@@ -15,7 +15,6 @@ class SlideBar {
     }
     start(){
         document.body.appendChild(this.node);
-        console.log('ok')
     }
     stop(){
         cache.appendChild(this.node)
