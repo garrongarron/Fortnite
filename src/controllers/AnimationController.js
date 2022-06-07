@@ -35,12 +35,17 @@ class AnimationController {
             }
         }
         if (this.state.mode == mode.SHOOTER) {
-            if (this.state.translation.y == 1) {// console.log('2 adelante');
-                this.transitionHandler.action(animationBehaviour.run, speed)
+            if (false) {
+            } else if (this.state.translation.x == 1) {// console.log('2 adelante');
+                this.transitionHandler.action(animationBehaviour.rifle_left, speed*0+1)
+            } else if (this.state.translation.x == -1) {// console.log('1 atras');
+                this.transitionHandler.action(animationBehaviour.rifle_right, speed*0+1)
+            } else if (this.state.translation.y == 1) {// console.log('2 adelante');
+                this.transitionHandler.action(animationBehaviour.rifle_run, speed)
             } else if (this.state.translation.y == -1) {// console.log('1 atras');
-                this.transitionHandler.action(animationBehaviour.runBack, speed)
+                this.transitionHandler.action(animationBehaviour.rifle_runBack, speed)
             } else {// console.log('0 quieto');
-                this.transitionHandler.action(animationBehaviour.idle, speed)
+                this.transitionHandler.action(animationBehaviour.rifle_idle, speed)
             }
         }
     }

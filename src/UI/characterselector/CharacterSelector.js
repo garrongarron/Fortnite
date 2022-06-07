@@ -14,13 +14,14 @@ class CharacterSelector {
             this.node = document.createElement('div')
             this.node.innerHTML = html
             this.node.style.display = 'none'
+            this.node.querySelector('button').style.display = 'none'
             document.body.appendChild(this.node)
         })
         this.characterContainer = null
     }
     cameraSpinOut = () =>{
-        camera.rotation.y -= 0.05
-        if(camera.rotation.y <= -Math.PI/2 ){
+        camera.rotation.y += 0.05
+        if(camera.rotation.y >= Math.PI/2 ){
             loopMachine.removeCallback(this.cameraSpinOut)
             this.loadCharacter()
             camera.rotation.y  = -Math.PI*1.75
@@ -32,6 +33,7 @@ class CharacterSelector {
             loopMachine.removeCallback(this.cameraSpinIn)
             camera.rotation.y = 0
             sounds.play('getGun')
+            this.node.querySelector('button').style.display = 'block'
         }
     }
     loadCharacter(){
@@ -52,6 +54,7 @@ class CharacterSelector {
                 li.addEventListener('click', () => {
                     sounds.play('getGun')
                     this.characterContainer = character[1]
+                    this.node.querySelector('button').style.display = 'none'
                     loopMachine.addCallback(this.cameraSpinOut)
                 })
                 this.node.querySelector('ul').append(li)

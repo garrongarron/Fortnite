@@ -5,6 +5,12 @@ const fileList = {
     "3":"Left Strafe.fbx",
     "4":"Right Strafe.fbx",
 
+    "20":"Rifle Aiming Idle.fbx",
+    "21":"Rifle Run.fbx",
+    "22":"Rifle Run Backward.fbx",
+    "23":"Rifle Run Left.fbx",
+    "24":"Rifle Run Right.fbx",
+
     // "5":"Idle.fbx",
     // "6":"Idle.fbx",
     // "7":"Pistol Strafe Left.fbx",
