@@ -13,6 +13,7 @@ import player from "../game/Player.js";
 import loadTrees from "../models/Tress/TreeSpawner.js";
 import hpSystem from "../UI/hpsystem/HPSystem.js";
 import inventoryHandler from "../UI/inventory/InventoryHandler.js";
+import pointer from "../UI/pointer/Pointer.js";
 
 
 class GameScene {
@@ -36,6 +37,7 @@ class GameScene {
         hpSystem.addValue(-100)
         setInterval(() => {
             hpSystem.addValue(.2)
+            pointer.start()
         }, 500);
 
         loopMachine.addCallback(this.render);

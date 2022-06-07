@@ -5,11 +5,12 @@ class CameraController {
         this.peerId = peerId
         this.character = null
         this.radio = 3 //1.75
+        this.ratio = 15
+        this.ahead = this.radio * this.ratio
         this.height = 1.5
         this.heightTarget = 1.2
         this.angle = 0.15 //10* (Math.PI / 2)
         this.angleSensibility = 0.02
-        this.ahead = 20
         this.camera = null
         this.state = null
         this.target = new THREE.Vector3()
@@ -30,7 +31,7 @@ class CameraController {
         //angle
         this.camera.position.set(
             position.x - Math.sin(this.x + this.angle) * this.radio,
-            position.y + this.height + this.y / 500,
+            position.y + this.height + (this.y / 500) ,
             position.z - Math.cos(this.x + this.angle) * this.radio,
         )
     }
@@ -38,7 +39,7 @@ class CameraController {
         //ahead
         this.camera.lookAt(
             position.x + Math.sin(this.x) * this.ahead,
-            position.y - this.y / 100,
+            position.y + this.height - (this.y / 500)* this.ratio,
             position.z + Math.cos(this.x) * this.ahead
         )
         if (this.state.translation.y == 1) {
