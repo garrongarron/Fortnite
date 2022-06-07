@@ -9,9 +9,9 @@ import { CameraController } from "../controllers/CameraController.js";
 import { CharacterController } from "../controllers/CharacterController.js"
 import { CollectableController } from "../controllers/CollectableController.js";
 import { CollisionController } from "../controllers/CollisionController.js";
+import { CRotationController } from "../controllers/CRotationController.js";
 import { GravityController } from "../controllers/GravityController.js";
 import { KeyController } from "../controllers/KeyController.js";
-import { MouseController } from "../controllers/MouseController.js";
 import { MoveController } from "../controllers/MoveController.js";
 import nick from "../services/nick.js";
 import collectableSystem from "./CollectableSystem.js";
@@ -24,13 +24,11 @@ class ControllerBuilder {
         this.characterController = new CharacterController();
         this.characterController.addCharacter(model);
         this.characterController.addController(new KeyController(nick))
-        const mc = new MouseController(nick)
-        mc.setCamera(camera)
-        this.characterController.addController(mc)
         this.characterController.addController(new MoveController(nick))
         const cc = new CameraController(nick)
         cc.setCamera(camera)
         this.characterController.addController(cc)
+        this.characterController.addController(new CRotationController(nick))
 
         const gc = new GravityController(nick)
         setTimeout(() => {
@@ -54,7 +52,6 @@ class ControllerBuilder {
         keyListener.start();
         mouse.setCanvas(canvas)
         mouse.start();
-        ac.start();
     }
 }
 
