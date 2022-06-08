@@ -1,13 +1,16 @@
 import mouse from "../basic/Mouse.js"
+import { mode } from "./ModeController.js"
 
 class CameraController {
     constructor(peerId) {
         this.peerId = peerId
         this.character = null
         this.radio = 3 //1.75
+        this.radio1 = 1 //1.75
+        this.radio2 = 3 //1.75
         this.ratio = 15
         this.ahead = this.radio * this.ratio
-        this.height = 1.5
+        this.height = 1.4
         this.heightTarget = 1.2
         this.angle = 0.15 //10* (Math.PI / 2)
         this.angleSensibility = 0.02
@@ -21,6 +24,7 @@ class CameraController {
     init(characterController) {
         this.character = characterController.character
         this.state = characterController.state
+        this.state.target = this.target
     }
 
     setCamera(camera) {
@@ -31,23 +35,24 @@ class CameraController {
         //angle
         this.camera.position.set(
             position.x - Math.sin(this.x + this.angle) * this.radio,
-            position.y + this.height + (this.y / 500) ,
+            position.y + this.height + (this.y / 500),
             position.z - Math.cos(this.x + this.angle) * this.radio,
         )
     }
     cameraLookAt(position) {
         //ahead
-        this.camera.lookAt(
+        this.target.set(
             position.x + Math.sin(this.x) * this.ahead,
-            position.y + this.height - (this.y / 500)* this.ratio,
+            position.y + this.height - (this.y / 500) * this.ratio,
             position.z + Math.cos(this.x) * this.ahead
         )
+        this.camera.lookAt(this.target)
         if (this.state.translation.y == 1) {
             this.state.cRotation.y = THREE.MathUtils.lerp(this.state.cRotation.y, this.x, .1)
         }
     }
     tick() {
-
+        this.ahead = this.radio * this.ratio
         // if (this.state.angle.y == 1) this.angle -= this.angleSensibility
         // if (this.state.angle.y == -1) this.angle += this.angleSensibility
         this.y = THREE.MathUtils.lerp(this.y, mouse.acumulated.y, 0.3)
@@ -55,6 +60,13 @@ class CameraController {
 
         const position = this.character.position.clone()
 
+        
+        let radioTmp = this.state.mode == mode.SHOOTER ? 1.5: 3
+        let angleTmp = this.state.mode == mode.SHOOTER ? .65: .15
+        let heightTmp = this.state.mode == mode.SHOOTER ? 1.4: 1.8
+        this.radio = THREE.MathUtils.lerp(this.radio, radioTmp, .1)
+        this.angle = THREE.MathUtils.lerp(this.angle, angleTmp, .1)
+        this.height = THREE.MathUtils.lerp(this.height, heightTmp, .1)
         this.cameraPosition(position)
 
 

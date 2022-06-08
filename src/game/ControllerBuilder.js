@@ -3,7 +3,6 @@ import eventBus from "../basic/EventBus.js";
 import keyListener from "../basic/KeyListener.js";
 import mouse from "../basic/Mouse.js";
 import { canvas } from "../basic/Renderer.js";
-import scene from "../basic/Scene.js";
 import bullet from "../basic/shapes/Bullet.js";
 import terrain from "../basic/terrain/Terrain.js";
 import { AnimationController } from "../controllers/AnimationController.js";
@@ -16,6 +15,7 @@ import { GravityController } from "../controllers/GravityController.js";
 import { KeyController } from "../controllers/KeyController.js";
 import { MoveController } from "../controllers/MoveController.js";
 import { WeaponController } from "../controllers/WeaponController.js";
+import rifle from "../models/guns/Rifle.js";
 import nick from "../services/nick.js";
 import characters from "./Characters.js";
 import collectableSystem from "./CollectableSystem.js";
@@ -55,7 +55,7 @@ class ControllerBuilder {
 
         //weapon
         const wc = new WeaponController(nick)
-        wc.setWeapon(bullet)
+        wc.setWeapon(rifle)
         this.characterController.addController(wc)
 
         this.characterController.start();
