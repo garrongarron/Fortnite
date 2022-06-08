@@ -12,6 +12,7 @@ import controllerBuilder from "../game/ControllerBuilder.js";
 import player from "../game/Player.js";
 import loadTrees from "../models/Tress/TreeSpawner.js";
 import hpSystem from "../UI/hpsystem/HPSystem.js";
+import instructions from "../UI/insrtuctions/Instructions.js";
 import inventoryHandler from "../UI/inventory/InventoryHandler.js";
 import pointer from "../UI/pointer/Pointer.js";
 
@@ -27,7 +28,7 @@ class GameScene {
         terrain.start(scene)
         scene.add(light);
         loadTrees(scene);
-        
+        instructions.start()
         hpSystem.start();
         hpSystem.addValue(-100)
         setInterval(() => {

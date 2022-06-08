@@ -19,14 +19,16 @@ class WeaponController {
         this.rightHand = null
         this.leftHand = null
         this.chesRotation = 15
+        this.ray = null
         this.n = 0
+    }
+    setRay(ray) {
+        this.ray = ray
     }
     setWeapon(weapon) {
         this.weapon = weapon
     }
-    setChest(chest) {
-        this.chest = chest;
-    }
+    
     #setRightHand() {
         const obj = Object.values(characters).filter(data => this.character.name == data.name)[0]
         const rightHandName = obj.rightHandName
@@ -56,6 +58,9 @@ class WeaponController {
         this.#setRightHand()
         this.rightHand.attach(this.weapon)
         this.weapon.position.copy(this.rightHand.position)
+        this.spawner = this.weapon.children[1]
+        this.spawner.add(this.ray)
+
         document.removeEventListener('mousedown', this.shot)
         document.addEventListener('mousedown', this.shot)
         sounds.setVolume('impact', .125)
@@ -65,15 +70,15 @@ class WeaponController {
     }
 
     shot = () => {
-        // if(this.state.mode != mode.SHOOTER) return
+        if(this.state.mode != mode.SHOOTER) return
         sounds.play('impact')
-        // ray.visible = true
-        // clearTimeout(this.n)
-        // this.n = 0
-        // this.n = setTimeout(() => {
-        //     ray.visible = false
-        //     this.n = 0
-        // }, 100);
+        this.ray.visible = true
+        clearTimeout(this.n)
+        this.n = 0
+        this.n = setTimeout(() => {
+            this.ray.visible = false
+            this.n = 0
+        }, 100);
         // triggerBurst(this.state.target)
     }
 
@@ -83,16 +88,13 @@ class WeaponController {
         // this.chest.rotation.x = mouse.acumulated.y / 2000
         
         if (this.state?.target && this.state.mode == mode.SHOOTER) {
-            const target = this.state.target.clone()
+            // const target = this.state.target.clone()
             // target.position.y -= 5
-            const chestRotation  = this.chest.rotation.clone()
-            this.chest.lookAt(this.state.target)
+            // const chestRotation  = this.chest.rotation.clone()
             
+            this.chest.lookAt(this.state.target)
             this.chest.rotation.y -= this.chesRotation*(Math.PI/180)
             this.chest.rotation.x += 15*(Math.PI/180)
-            
-            
-            
             
             // const y = this.chest.rotation.y
             // this.chest.rotation.copy(chestRotation)
@@ -100,10 +102,19 @@ class WeaponController {
             let v3 = new THREE.Vector3()
             this.leftHand.getWorldPosition(v3)
             this.weapon.lookAt(v3)
+            // 
+            // this.spawner.getWorldPosition(v31)
+            // this.ray.position.copy(this.spawner.position)
+            this.ray?.lookAt(this.state.target)
+
+
+
+
+            
         }
         // info.innerText = this.chest.rotation.x
         // if(mouse.delta.x ==0) this.weapon.lookAt(this.state.target)
-        // ray.lookAt(this.state.target)
+        
     }
 }
 

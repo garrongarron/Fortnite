@@ -4,6 +4,7 @@ import keyListener from "../basic/KeyListener.js";
 import mouse from "../basic/Mouse.js";
 import { canvas } from "../basic/Renderer.js";
 import bullet from "../basic/shapes/Bullet.js";
+import ray from "../basic/shapes/Ray.js";
 import terrain from "../basic/terrain/Terrain.js";
 import { AnimationController } from "../controllers/AnimationController.js";
 import { CameraController } from "../controllers/CameraController.js";
@@ -56,6 +57,7 @@ class ControllerBuilder {
         //weapon
         const wc = new WeaponController(nick)
         wc.setWeapon(rifle)
+        wc.setRay(ray())
         this.characterController.addController(wc)
 
         this.characterController.start();

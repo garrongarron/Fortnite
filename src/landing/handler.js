@@ -6,7 +6,7 @@ class Landing{
         document.querySelector('.landing button').addEventListener('click', ()=>{
             this.clean()
             sceneHandler.setSceneList(sceneList)
-            sceneHandler.goTo('default')
+            sceneHandler.goTo('default')//test
         })
     }
     clean(){

@@ -21,7 +21,7 @@ const characters = {
         getter: getAgentPeely,
         rightHandName,
         leftHandName,
-        chesRotation:60,
+        chesRotation:40,
         chestName: 'mixamorigSpine1',
     },
     Rebirth:{

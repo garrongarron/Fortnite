@@ -62,7 +62,7 @@ class CameraController {
 
         
         let radioTmp = this.state.mode == mode.SHOOTER ? 1.5: 3
-        let angleTmp = this.state.mode == mode.SHOOTER ? .65: .15
+        let angleTmp = this.state.mode == mode.SHOOTER ? .45: .15
         let heightTmp = this.state.mode == mode.SHOOTER ? 1.4: 1.8
         this.radio = THREE.MathUtils.lerp(this.radio, radioTmp, .1)
         this.angle = THREE.MathUtils.lerp(this.angle, angleTmp, .1)
