@@ -47,23 +47,21 @@ class CameraController {
             position.z + Math.cos(this.x) * this.ahead
         )
         this.camera.lookAt(this.target)
-        if (this.state.translation.y == 1) {
-            this.state.cRotation.y = THREE.MathUtils.lerp(this.state.cRotation.y, this.x, .1)
-        }
+        this.state.cRotation.y = THREE.MathUtils.lerp(this.state.cRotation.y, this.x, .1)
     }
     tick() {
         this.ahead = this.radio * this.ratio
         // if (this.state.angle.y == 1) this.angle -= this.angleSensibility
         // if (this.state.angle.y == -1) this.angle += this.angleSensibility
-        this.y = THREE.MathUtils.lerp(this.y, mouse.acumulated.y, 0.3)
-        this.x = THREE.MathUtils.lerp(this.x, -mouse.acumulated.x / 1000, 0.3)
+        this.y = THREE.MathUtils.lerp(this.y, mouse.acumulated.y, 0.1)
+        this.x = THREE.MathUtils.lerp(this.x, -mouse.acumulated.x / 1000, 0.1)
 
         const position = this.character.position.clone()
 
-        
-        let radioTmp = this.state.mode == mode.SHOOTER ? 1.5: 3
-        let angleTmp = this.state.mode == mode.SHOOTER ? .45: .15
-        let heightTmp = this.state.mode == mode.SHOOTER ? 1.4: 1.8
+
+        let radioTmp = this.state.mode == mode.SHOOTER ? 1.5 : 3
+        let angleTmp = this.state.mode == mode.SHOOTER ? .45 : .15
+        let heightTmp = this.state.mode == mode.SHOOTER ? 1.4 : 1.8
         this.radio = THREE.MathUtils.lerp(this.radio, radioTmp, .1)
         this.angle = THREE.MathUtils.lerp(this.angle, angleTmp, .1)
         this.height = THREE.MathUtils.lerp(this.height, heightTmp, .1)

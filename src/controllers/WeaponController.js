@@ -28,7 +28,7 @@ class WeaponController {
     setWeapon(weapon) {
         this.weapon = weapon
     }
-    
+
     #setRightHand() {
         const obj = Object.values(characters).filter(data => this.character.name == data.name)[0]
         const rightHandName = obj.rightHandName
@@ -70,7 +70,7 @@ class WeaponController {
     }
 
     shot = () => {
-        if(this.state.mode != mode.SHOOTER) return
+        if (this.state.mode != mode.SHOOTER) return
         sounds.play('impact')
         this.ray.visible = true
         clearTimeout(this.n)
@@ -83,38 +83,19 @@ class WeaponController {
     }
 
     tick() {
-        // this.weapon.position.copy(this.rightHand.position)
-        // this.weapon.position.y = 2+ mouse.acumulated.y / 150 
-        // this.chest.rotation.x = mouse.acumulated.y / 2000
-        
+
         if (this.state?.target && this.state.mode == mode.SHOOTER) {
-            // const target = this.state.target.clone()
-            // target.position.y -= 5
-            // const chestRotation  = this.chest.rotation.clone()
-            
-            this.chest.lookAt(this.state.target)
-            this.chest.rotation.y -= this.chesRotation*(Math.PI/180)
-            this.chest.rotation.x += 15*(Math.PI/180)
-            
-            // const y = this.chest.rotation.y
-            // this.chest.rotation.copy(chestRotation)
-            // this.chest.rotation.y = y
+            if (this.state.translation.x != 0) {
+                this.chest.rotateOnWorldAxis(new THREE.Vector3(0, 0, 1), (camera.getWorldDirection(new THREE.Vector3()).y + (10 * Math.PI / 180))*1.1)
+            } else {
+                this.chest.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), -camera.getWorldDirection(new THREE.Vector3()).y + (0 * Math.PI / 180))
+            }
+            this.chest.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), this.chesRotation * Math.PI / 180)
             let v3 = new THREE.Vector3()
             this.leftHand.getWorldPosition(v3)
             this.weapon.lookAt(v3)
-            // 
-            // this.spawner.getWorldPosition(v31)
-            // this.ray.position.copy(this.spawner.position)
             this.ray?.lookAt(this.state.target)
-
-
-
-
-            
         }
-        // info.innerText = this.chest.rotation.x
-        // if(mouse.delta.x ==0) this.weapon.lookAt(this.state.target)
-        
     }
 }
 
